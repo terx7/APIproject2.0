@@ -9,8 +9,12 @@ let occupations =  {
 const occupationSelect = document.getElementById("#occupation-select");
 
 for ( const key in occupations) {
-    const occupation_value = occupations[key].name
-    
+    const occupation_value = occupations[key].name;
+    let option = document.createElement("option");
+    option.innerHTML = "<option>" + occupation_value + "</option>";
+    option.classList.add("amet");
+    option.setAttribute("id", key);
+    document.querySelector("#occupation-select").appendChild(option);
 };
 
 fetch("http://andmebaas.stat.ee/sdmx-json/data/PA633/DBL103+83+DBL245+DBL269+DBL278+DBL288.3.1/all?startTime=2014&endTime=2014&dimensionAtObservation=allDimensions")
@@ -39,5 +43,13 @@ fetch("http://andmebaas.stat.ee/sdmx-json/data/PA633/DBL103+83+DBL245+DBL269+DBL
         console.log(dataSetsKeyValues)
         
     });
+
+    occupationSelect.addEventListener('change', () => {
+        if (occupationSelect.value) {
+            occupationSelect[value]
+        }
+    })
+
+    console.log(Salary)
     console.log(occupations)
 })
